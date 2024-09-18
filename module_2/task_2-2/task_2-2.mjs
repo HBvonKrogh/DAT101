@@ -163,17 +163,35 @@ printOut("Convert from text '254' to a number: " + Number("254"));
 
 printOut("Convert from text '57.23' to a number: " + Number("57.23"));
 
-printOut("Convert from text '25 kroner' to a number: " + Number("25 kroner"));
+printOut("Convert from text '25 kroner' to a number: " + parseInt("25 kroner").toString());
 
 printOut(newLine);
 
 printOut("--- Part 9 ----------------------------------------------------------------------------------------------");
-/* Put your code below here!*/
-printOut("Replace this with you answer!");
+/*
+Create a variable "r" and randomly generate a number from 1 to 360 (1 >= r <= 360).
+*/
+
+let r = Math.floor(Math.random() * 361)
+
+printOut(r.toString());
 printOut(newLine);
 
 /* Task 10*/
 printOut("--- Part 10 ---------------------------------------------------------------------------------------------");
-/* Put your code below here!*/
-printOut("Replace this with you answer!");
+/*
+Use modulus (%) to calculate how many weeks and days are in 131 days.
+*/
+
+
+let dager = 131;
+let uker = (131 / 7);
+
+const uker1 = Math.floor(uker);
+
+const daysInWeeks = 7;
+
+let x = dager % 7;
+
+printOut("Weeks: "+ uker1 + " Days: "+ x.toString());
 printOut(newLine);
