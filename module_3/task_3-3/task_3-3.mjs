@@ -9,6 +9,7 @@ Norwegian standard. Example: "Friday, October 18, 2019" Use an example from this
 toLocaleString , Use "no-NB" as an alias for the Norwegian language in the function call to
 "toLocaleDateString".
 */
+
 function printNorwegianDate() {
     const today = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -106,43 +107,183 @@ function rectangleProperties(dimensions) {
     const area = width * height;
 
     printOut(`For a rectangle with width ${width} and height ${height}:`);
-    console.log(`- Circumference: ${circumference}`);
-    console.log(`- Area: ${area}`);
+    printOut(`- Circumference: ${circumference}`);
+    printOut(`- Area: ${area}`);
 }
 
-// Example usage
 rectangleProperties({ width: 10, height: 5 });
 
-printOut("Replace this with you answer!");
 printOut(newLine);
 
 printOut("--- Part 5 ----------------------------------------------------------------------------------------------");
-/* Put your code below here!*/
-printOut("Replace this with you answer!");
+/*
+Create a function that handles the conversion between Celsius, Fahrenheit, and Kelvin. Use three different
+numbers and print all three combinations as integers (no decimals). Design the function to take two
+parameters: first the temperature, then the temperature type/id. Use these parameters to convert to the
+other two temperature types and print them. 
+*/
+
+function convertTemperature(value, unit) {
+    let celsius, fahrenheit, kelvin;
+
+    if (unit === "Celsius") {
+
+        fahrenheit = (value * 9 / 5) + 32;
+        kelvin = value + 273.15;
+        printOut(`Celsius: ${Math.floor(value)}, Fahrenheit: ${Math.floor(fahrenheit)}, Kelvin: ${Math.floor(kelvin)}`);
+    } else if (unit === "Fahrenheit") {
+
+        celsius = (value - 32) * 5 / 9;
+        kelvin = (value - 32) * 5 / 9 + 273.15;
+        printOut(`Fahrenheit: ${Math.floor(value)}, Celsius: ${Math.floor(celsius)}, Kelvin: ${Math.floor(kelvin)}`);
+    } else if (unit === "Kelvin") {
+
+        celsius = value - 273.15;
+        fahrenheit = (value - 273.15) * 9 / 5 + 32;
+        printOut(`Kelvin: ${Math.floor(value)}, Celsius: ${Math.floor(celsius)}, Fahrenheit: ${Math.floor(fahrenheit)}`);
+    } else {
+        printOut("Unknown temperature unit");
+    }
+}
+
+
+convertTemperature(0, "Celsius");
+convertTemperature(32, "Fahrenheit");
+convertTemperature(273.15, "Kelvin");
+
 printOut(newLine);
 
 printOut("--- Part 6 ----------------------------------------------------------------------------------------------");
-/* Put your code below here!*/
-printOut("Replace this with you answer!");
+/*
+Create a function that calculates the price without VAT (sales tax). The function needs two arguments, one
+for the price including VAT (gross amount) and one for the tax group in text (normal = 25%, food = 15%,
+hotel, transport, and cinema = 10%). The text argument should not be case-sensitive. If the VAT group is
+not correct, the text "Unknown VAT group!" should be printed. The function must return the price without
+tax, i.e., the net price. Call the function four times with different gross amounts. One for each of the VAT
+groups (25, 15, and 10) and one with an unknown group for example “goblins”. Tip: Use "NaN" to identify
+that an unknown VAT group is returned from the function. Formula: net = (100 * gross) / (vat + 100)
+*/
+
+function calculateNetPrice(aPrice, aTaxGroup) {
+    let net = NaN;
+    let taxGroup = aTaxGroup.toUpperCase();
+    let vat = NaN;
+  
+    printOut("taxGroup = " + taxGroup);
+  
+    switch (taxGroup) {
+      case "NORMAL":
+        vat = 25;
+    }
+  
+    if (!Number.isNaN(vat)) {
+      net = (100 * aPrice) / (vat + 100);
+    }
+  
+    return net;
+  }
+  
+  const netPrice1 = calculateNetPrice(100, "normal");
+  if (Number.isNaN(netPrice1)) {
+    printOut("Unknown VAT group!");
+  } else {
+    printOut("netPrice1 = " + netPrice1.toFixed(2));
+  }
+  
+  const netPrice2 = calculateNetPrice(100, "goblins");
+  if (Number.isNaN(netPrice1)) {
+    printOut("Unknown VAT group!");
+  } else {
+    printOut("netPrice2 = " + netPrice2.toFixed(2));
+  }
+
+
 printOut(newLine);
 
 printOut("--- Part 7 ----------------------------------------------------------------------------------------------");
-/* Put your code below here!*/
-printOut("Replace this with you answer!");
+/*
+Create a function that takes 3 arguments and returns the following calculation:
+● Speed = Distance / Time
+If speed is missing, calculate speed. If time is missing, calculate time. If distance is missing, calculate the
+distance. If more than one parameter is missing, return NaN.
+*/
+
+  
+
 printOut(newLine);
 
 printOut("--- Part 8 ----------------------------------------------------------------------------------------------");
-/* Put your code below here!*/
+/*
+Create a function that takes four parameters and returns a result. Parameter one: A text string. Parameter
+two: Value for the maximum size of the text string. Parameter three: Text character. Parameter four:
+Consecutive insertion of characters (boolean value). Take the text parameter; if it's smaller than the
+maximum, make it larger with the specified character, either before or after, using the given boolean value.
+Have the function return the new string and print it out.
+*/
+
+
 printOut("Replace this with you answer!");
 printOut(newLine);
 
 printOut("--- Part 9 ----------------------------------------------------------------------------------------------");
-/* Put your code below here!*/
-printOut("Replace this with you answer!");
+/*
+From mathematics, we have the following expression:
+
+                1 + 2 = 3
+            4 + 5 + 6 = 7 + 8
+        9 + 10 + 11 + 12 = 13 + 14 + 15
+    16 + 17 + 18 + 19 + 20 = 21 + 22 + 23 + 24
+25 + 26 + 27 + 28 + 29 + 30 = 31 + 32 + 33 + 34 + 35
+
+Create a function or functions that can test this expression for 200 lines. If the test fails, print out where the
+two sides are not equal and stop the loop. If all 200 lines are OK, print "Maths fun!".
+*/
+function testIfMathIsFun() {
+    let op = 1;
+    let line = 1;
+    // Left side
+    let ok = false;
+    do {
+      let sumLeft = 0;
+      for (let left = 0; left < line + 1; left++) {
+        sumLeft += op;
+        op++;
+      }
+  
+      let sumRight = 0;
+      for (let right = 0; right < line; right++) {
+        sumRight += op;
+        op++;
+      }
+  
+      if (sumLeft !== sumRight) {
+        ok = false;
+        printOut("Error in line " + line.toString());
+      }else{
+        ok = true;
+      }
+      line++;
+  
+      if(line > 200){
+        printOut("Math is Fun!");
+        break;
+      }
+      
+    } while (ok);
+  }
+  
+  testIfMathIsFun();
+
 printOut(newLine);
 
 /* Task 10*/
 printOut("--- Part 10 ---------------------------------------------------------------------------------------------");
-/* Put your code below here!*/
+/*
+Recursive function. Create a function that calculates the factorial of a given number. Factorial of 5 = 5 * 4 *
+3 * 2 * 1. Factorial of 6 = 6 * 5 * 4 * 3 * 2 * 1. Etc.
+Have the function call itself to calculate the result and print the final answer.
+*/
+
+
 printOut("Replace this with you answer!");
 printOut(newLine);
