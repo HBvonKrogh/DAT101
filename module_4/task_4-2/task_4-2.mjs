@@ -25,6 +25,10 @@ printOut("--- Part 2 -----------------------------------------------------------
 Take the array from task 1 and use a built-in method found in the array object to print all the elements with
 a custom defined character separating all the elements.
 */
+let customSeparator = " - ";
+let joinedNumbers = numbers.join(customSeparator);
+printOut(joinedNumbers);
+
 
 printOut(newLine);
 
@@ -35,6 +39,14 @@ Take this text and convert it into an array that contains all the words in the t
 contain only one word from the text. Use a loop to traverse (run through) this array so that you can print
 which word number, which index the word is at, and the word itself.
 */
+
+const textPart3 = "Hei på deg, hvordan har du det?";
+const words = textPart3.split(" ");
+for (let index = 0; index < words.length; index++) {
+  const word = words[index];
+  printOut(index + ": " + word);
+}
+
 
 printOut(newLine);
 
