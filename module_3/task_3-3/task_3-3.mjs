@@ -11,9 +11,9 @@ toLocaleString , Use "no-NB" as an alias for the Norwegian language in the funct
 */
 
 function printNorwegianDate() {
-    const today = new Date();
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    printOut(today.toLocaleDateString('no-NB', options));
+  const today = new Date();
+  const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+  printOut(today.toLocaleDateString("no-NB", options));
 }
 
 printNorwegianDate();
@@ -39,27 +39,27 @@ something both informative and engaging.
 */
 
 function getTodayDateInNorwegian() {
-    const today = new Date();
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedDate = today.toLocaleDateString('no-NB', options);
-    printOut(`📅 Dagens dato: ${formattedDate}`);
-    return today;
+  const today = new Date();
+  const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+  const formattedDate = today.toLocaleDateString("no-NB", options);
+  printOut(`📅 Dagens dato: ${formattedDate}`);
+  return today;
 }
 
 function daysUntil2XKORelease() {
-    const releaseDate = new Date('2025-05-14');
-    const today = getTodayDateInNorwegian();
+  const releaseDate = new Date("2025-05-14");
+  const today = getTodayDateInNorwegian();
 
-    const diffInTime = releaseDate - today;
-    const daysLeft = Math.ceil(diffInTime / (1000 * 60 * 60 * 24));
+  const diffInTime = releaseDate - today;
+  const daysLeft = Math.ceil(diffInTime / (1000 * 60 * 60 * 24));
 
-    if (daysLeft > 0) {
-        printOut(`🔥 Kun ${daysLeft} dager igjen til 2XKO-slippet! Gjør deg klar for kampene! 🥊`);
-    } else if (daysLeft === 0) {
-        PrintOut(`🎉 I DAG er den store dagen! 2XKO lanseres nå! La kampene begynne! 🥳`);
-    } else {
-        printOut(`🚀 2XKO ble lansert for ${Math.abs(daysLeft)} dager siden. Har du allerede kjempet?`);
-    }
+  if (daysLeft > 0) {
+    printOut(`🔥 Kun ${daysLeft} dager igjen til 2XKO-slippet! Gjør deg klar for kampene! 🥊`);
+  } else if (daysLeft === 0) {
+    PrintOut(`🎉 I DAG er den store dagen! 2XKO lanseres nå! La kampene begynne! 🥳`);
+  } else {
+    printOut(`🚀 2XKO ble lansert for ${Math.abs(daysLeft)} dager siden. Har du allerede kjempet?`);
+  }
 }
 
 daysUntil2XKORelease();
@@ -71,19 +71,19 @@ printOut("--- Part 3 -----------------------------------------------------------
 Create a function that receives the radius of a circle and prints the diameter, circumference, and area.
 */
 function circleProperties(radius) {
-    if (radius <= 0) {
-        printOut("Radius must be a positive number.");
-        return;
-    }
-    
-    const diameter = 2 * radius;
-    const circumference = 2 * Math.PI * radius;
-    const area = Math.PI * Math.pow(radius, 2);
+  if (radius <= 0) {
+    printOut("Radius must be a positive number.");
+    return;
+  }
 
-    printOut(`For a circle with radius ${radius}:`);
-    printOut(`- Diameter: ${diameter.toFixed(2)}`);
-    printOut(`- Circumference: ${circumference.toFixed(2)}`);
-    printOut(`- Area: ${area.toFixed(2)}`);
+  const diameter = 2 * radius;
+  const circumference = 2 * Math.PI * radius;
+  const area = Math.PI * Math.pow(radius, 2);
+
+  printOut(`For a circle with radius ${radius}:`);
+  printOut(`- Diameter: ${diameter.toFixed(2)}`);
+  printOut(`- Circumference: ${circumference.toFixed(2)}`);
+  printOut(`- Area: ${area.toFixed(2)}`);
 }
 
 circleProperties(1337);
@@ -96,19 +96,19 @@ Create a function that receives the width and height of a rectangle in an object
 and area of the given rectangle.
 */
 function rectangleProperties(dimensions) {
-    const { width, height } = dimensions;
-    
-    if (width <= 0 || height <= 0) {
-        printOut("Width and height must be positive numbers.");
-        return;
-    }
-    
-    const circumference = 2 * (width + height);
-    const area = width * height;
+  const { width, height } = dimensions;
 
-    printOut(`For a rectangle with width ${width} and height ${height}:`);
-    printOut(`- Circumference: ${circumference}`);
-    printOut(`- Area: ${area}`);
+  if (width <= 0 || height <= 0) {
+    printOut("Width and height must be positive numbers.");
+    return;
+  }
+
+  const circumference = 2 * (width + height);
+  const area = width * height;
+
+  printOut(`For a rectangle with width ${width} and height ${height}:`);
+  printOut(`- Circumference: ${circumference}`);
+  printOut(`- Area: ${area}`);
 }
 
 rectangleProperties({ width: 10, height: 5 });
@@ -124,28 +124,24 @@ other two temperature types and print them.
 */
 
 function convertTemperature(value, unit) {
-    let celsius, fahrenheit, kelvin;
+  let celsius, fahrenheit, kelvin;
 
-    if (unit === "Celsius") {
-
-        fahrenheit = (value * 9 / 5) + 32;
-        kelvin = value + 273.15;
-        printOut(`Celsius: ${Math.floor(value)}, Fahrenheit: ${Math.floor(fahrenheit)}, Kelvin: ${Math.floor(kelvin)}`);
-    } else if (unit === "Fahrenheit") {
-
-        celsius = (value - 32) * 5 / 9;
-        kelvin = (value - 32) * 5 / 9 + 273.15;
-        printOut(`Fahrenheit: ${Math.floor(value)}, Celsius: ${Math.floor(celsius)}, Kelvin: ${Math.floor(kelvin)}`);
-    } else if (unit === "Kelvin") {
-
-        celsius = value - 273.15;
-        fahrenheit = (value - 273.15) * 9 / 5 + 32;
-        printOut(`Kelvin: ${Math.floor(value)}, Celsius: ${Math.floor(celsius)}, Fahrenheit: ${Math.floor(fahrenheit)}`);
-    } else {
-        printOut("Unknown temperature unit");
-    }
+  if (unit === "Celsius") {
+    fahrenheit = (value * 9) / 5 + 32;
+    kelvin = value + 273.15;
+    printOut(`Celsius: ${Math.floor(value)}, Fahrenheit: ${Math.floor(fahrenheit)}, Kelvin: ${Math.floor(kelvin)}`);
+  } else if (unit === "Fahrenheit") {
+    celsius = ((value - 32) * 5) / 9;
+    kelvin = ((value - 32) * 5) / 9 + 273.15;
+    printOut(`Fahrenheit: ${Math.floor(value)}, Celsius: ${Math.floor(celsius)}, Kelvin: ${Math.floor(kelvin)}`);
+  } else if (unit === "Kelvin") {
+    celsius = value - 273.15;
+    fahrenheit = ((value - 273.15) * 9) / 5 + 32;
+    printOut(`Kelvin: ${Math.floor(value)}, Celsius: ${Math.floor(celsius)}, Fahrenheit: ${Math.floor(fahrenheit)}`);
+  } else {
+    printOut("Unknown temperature unit");
+  }
 }
-
 
 convertTemperature(0, "Celsius");
 convertTemperature(32, "Fahrenheit");
@@ -165,38 +161,37 @@ that an unknown VAT group is returned from the function. Formula: net = (100 * g
 */
 
 function calculateNetPrice(aPrice, aTaxGroup) {
-    let net = NaN;
-    let taxGroup = aTaxGroup.toUpperCase();
-    let vat = NaN;
-  
-    printOut("taxGroup = " + taxGroup);
-  
-    switch (taxGroup) {
-      case "NORMAL":
-        vat = 25;
-    }
-  
-    if (!Number.isNaN(vat)) {
-      net = (100 * aPrice) / (vat + 100);
-    }
-  
-    return net;
-  }
-  
-  const netPrice1 = calculateNetPrice(100, "normal");
-  if (Number.isNaN(netPrice1)) {
-    printOut("Unknown VAT group!");
-  } else {
-    printOut("netPrice1 = " + netPrice1.toFixed(2));
-  }
-  
-  const netPrice2 = calculateNetPrice(100, "goblins");
-  if (Number.isNaN(netPrice1)) {
-    printOut("Unknown VAT group!");
-  } else {
-    printOut("netPrice2 = " + netPrice2.toFixed(2));
+  let net = NaN;
+  let taxGroup = aTaxGroup.toUpperCase();
+  let vat = NaN;
+
+  printOut("taxGroup = " + taxGroup);
+
+  switch (taxGroup) {
+    case "NORMAL":
+      vat = 25;
   }
 
+  if (!Number.isNaN(vat)) {
+    net = (100 * aPrice) / (vat + 100);
+  }
+
+  return net;
+}
+
+const netPrice1 = calculateNetPrice(100, "normal");
+if (Number.isNaN(netPrice1)) {
+  printOut("Unknown VAT group!");
+} else {
+  printOut("netPrice1 = " + netPrice1.toFixed(2));
+}
+
+const netPrice2 = calculateNetPrice(100, "goblins");
+if (Number.isNaN(netPrice1)) {
+  printOut("Unknown VAT group!");
+} else {
+  printOut("netPrice2 = " + netPrice2.toFixed(2));
+}
 
 printOut(newLine);
 
@@ -208,7 +203,6 @@ If speed is missing, calculate speed. If time is missing, calculate time. If dis
 distance. If more than one parameter is missing, return NaN.
 */
 
-  
 
 printOut(newLine);
 
@@ -220,9 +214,26 @@ Consecutive insertion of characters (boolean value). Take the text parameter; if
 maximum, make it larger with the specified character, either before or after, using the given boolean value.
 Have the function return the new string and print it out.
 */
+const text = "Hello";
+const maxSize = 10;
+const char = "*";
+const insertBefore = true;
 
+function expandText(aText, aMaxSize, aChar, aInsertBefore) {
+  let newText = aText;
+  if (newText.length < aMaxSize) {
+    const diff = aMaxSize - newText.length;
+    const charString = aChar.repeat(diff);
+    if (aInsertBefore) {
+      newText = charString + newText;
+    } else {
+      newText = newText + charString;
+    }
+  }
+  return newText;
+}
+printOut(expandText(text, maxSize, char, insertBefore));
 
-printOut("Replace this with you answer!");
 printOut(newLine);
 
 printOut("--- Part 9 ----------------------------------------------------------------------------------------------");
@@ -239,40 +250,39 @@ Create a function or functions that can test this expression for 200 lines. If t
 two sides are not equal and stop the loop. If all 200 lines are OK, print "Maths fun!".
 */
 function testIfMathIsFun() {
-    let op = 1;
-    let line = 1;
-    // Left side
-    let ok = false;
-    do {
-      let sumLeft = 0;
-      for (let left = 0; left < line + 1; left++) {
-        sumLeft += op;
-        op++;
-      }
-  
-      let sumRight = 0;
-      for (let right = 0; right < line; right++) {
-        sumRight += op;
-        op++;
-      }
-  
-      if (sumLeft !== sumRight) {
-        ok = false;
-        printOut("Error in line " + line.toString());
-      }else{
-        ok = true;
-      }
-      line++;
-  
-      if(line > 200){
-        printOut("Math is Fun!");
-        break;
-      }
-      
-    } while (ok);
-  }
-  
-  testIfMathIsFun();
+  let op = 1;
+  let line = 1;
+  // Left side
+  let ok = false;
+  do {
+    let sumLeft = 0;
+    for (let left = 0; left < line + 1; left++) {
+      sumLeft += op;
+      op++;
+    }
+
+    let sumRight = 0;
+    for (let right = 0; right < line; right++) {
+      sumRight += op;
+      op++;
+    }
+
+    if (sumLeft !== sumRight) {
+      ok = false;
+      printOut("Error in line " + line.toString());
+    } else {
+      ok = true;
+    }
+    line++;
+
+    if (line > 200) {
+      printOut("Math is Fun!");
+      break;
+    }
+  } while (ok);
+}
+
+testIfMathIsFun();
 
 printOut(newLine);
 
@@ -283,7 +293,14 @@ Recursive function. Create a function that calculates the factorial of a given n
 3 * 2 * 1. Factorial of 6 = 6 * 5 * 4 * 3 * 2 * 1. Etc.
 Have the function call itself to calculate the result and print the final answer.
 */
+const number = 5;
 
+printOut(`Factorial of ${number} is ${factorial(number)}`);
 
-printOut("Replace this with you answer!");
-printOut(newLine);
+function factorial(n) {
+  if (n === 1) {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
+}
